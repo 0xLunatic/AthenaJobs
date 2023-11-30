@@ -1,0 +1,10 @@
+name: AthenaJobs
+version: '${project.version}'
+main: lunatic.athenajobs.Main
+api-version: '1.20'
+commands:
+  helpjobs:
+    description: JobsHelp
+  givebooster:
+    permission: op
+    description: Give Booster
