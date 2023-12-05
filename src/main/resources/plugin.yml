@@ -8,3 +8,5 @@ commands:
   givebooster:
     permission: op
     description: Give Booster
+  terimakasih:
+    description: Berterimakasih!

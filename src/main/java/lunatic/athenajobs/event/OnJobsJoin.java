@@ -2,6 +2,11 @@ package lunatic.athenajobs.event;
 
 import com.gamingmesh.jobs.Jobs;
 import com.gamingmesh.jobs.api.JobsJoinEvent;
+import com.gamingmesh.jobs.api.JobsLeaveEvent;
+import com.gamingmesh.jobs.container.Job;
+import com.gamingmesh.jobs.container.JobsPlayer;
+import com.gamingmesh.jobs.dao.JobsDAO;
+import com.gamingmesh.jobs.dao.JobsDAOData;
 import lunatic.athenajobs.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -25,11 +30,15 @@ public class OnJobsJoin implements Listener {
                 player.sendMessage("§cFailed to choose that Jobs! Joining as Worker.");
                 player.sendMessage("§cYou don't have jobs before, you need to join Worker first!");
                 event.getPlayer().joinJob(Jobs.getJob("Worker"));
+                Jobs.getJobsDAO().cleanJobs();
+                Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
             }
         }else{
             if (event.getPlayer().getTotalLevels() == 0) {
                 player.sendMessage("§aSuccessfuly joined as Worker.");
                 event.getPlayer().joinJob(Jobs.getJob("Worker"));
+                Jobs.getJobsDAO().cleanJobs();
+                Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
             }
         }
         // Join First Starter Jobs Move
@@ -41,6 +50,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♨");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -56,6 +67,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♯");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -71,6 +84,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♦");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -86,6 +101,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f∮");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -101,6 +118,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♆");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -116,6 +135,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f✥");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -131,6 +152,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f☣");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -146,6 +169,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&fϡ");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -161,6 +186,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f⍫");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -176,6 +203,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f≠");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -191,6 +220,8 @@ public class OnJobsJoin implements Listener {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f☠");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -206,6 +237,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("MasterBrewer"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e♨");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -221,6 +255,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Artisan"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e♯");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -236,6 +273,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Excavator"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e♦");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -251,6 +291,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Glyphweaver"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e∮");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -266,6 +309,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Agriculturist"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e♆");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -281,6 +327,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("MasterAngler"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e✥");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -296,6 +345,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Scout"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e☣");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -311,6 +363,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Dighunter"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&eϡ");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -326,6 +381,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("MasterSmith"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e⍫");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -341,6 +399,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Timberer"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e≠");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -356,6 +417,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Villain"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&e☠");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -372,6 +436,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("AlchemicalDistiller"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c♨");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -387,6 +454,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("MasterArtisan"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c♯");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -402,6 +472,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Earthshaper"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c♦");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -417,6 +490,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("ArcaneArtisan"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c∮");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -432,6 +508,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Harvestmaster"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c♆");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -447,6 +526,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("AquaticMaestro"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c✥");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -462,6 +544,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Ranger"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c☣");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -477,6 +562,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Veinmaster"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&cϡ");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -492,6 +580,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("LegendaryForgemaster"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c⍫");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -507,6 +598,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Arborist"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c≠");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -522,6 +616,9 @@ public class OnJobsJoin implements Listener {
                     event.getPlayer().joinJob(Jobs.getJob("Psychopath"));
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
+                    setSuffix(player, "&c☠");
+                    Jobs.getJobsDAO().cleanJobs();
+                    Jobs.getJobsDAO().joinJob(event.getPlayer(), event.getPlayer().getJobProgression(event.getJob()));
                 } else {
                     player.sendMessage("§cYou don't have enough level to join this Jobs!");
                 }
@@ -550,9 +647,16 @@ public class OnJobsJoin implements Listener {
     }
     private void setSuffix(Player player, String suffix) {
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-
-        String command = "lp user " + player.getName() + " meta setsuffix ' "+ suffix +"'";
-
+        String command = "lp user " + player.getName() + " meta setsuffix 0 \"" + suffix + "\"";
         Bukkit.getServer().dispatchCommand(console, command);
+    }
+    @EventHandler
+    public void jobsLeaveEvent(JobsLeaveEvent event){
+        clearSuffix(event.getPlayer().getPlayer());
+    }
+    private void clearSuffix(Player player){
+        ConsoleCommandSender console1 = Bukkit.getServer().getConsoleSender();
+        String command1 = "lp user " + player.getName() + " meta clear";
+        Bukkit.getServer().dispatchCommand(console1, command1);
     }
 }

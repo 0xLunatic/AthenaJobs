@@ -1,14 +1,20 @@
 package lunatic.athenajobs;
 
+import com.gamingmesh.jobs.Jobs;
 import lunatic.athenajobs.commands.GiveBooster;
 import lunatic.athenajobs.commands.JobsSelectorCommand;
+import lunatic.athenajobs.commands.Terimakasih;
 import lunatic.athenajobs.event.OnJobsJoin;
 import lunatic.athenajobs.event.UseBooster;
 import lunatic.athenajobs.placeholder.GetPlaceholder;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
+    public Economy economy;
+    public String boosterIs;
 
     @Override
     public void onEnable() {
@@ -23,6 +29,14 @@ public final class Main extends JavaPlugin {
 
         getCommand("helpjobs").setExecutor(new JobsSelectorCommand(this));
         getCommand("givebooster").setExecutor(new GiveBooster(this));
+        getCommand("terimakasih").setExecutor(new Terimakasih(this));
+
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp != null) {
+            economy = rsp.getProvider();
+        } else {
+            throw new RuntimeException("Vault or an Economy plugin is not installed!");
+        }
     }
 
     @Override

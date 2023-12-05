@@ -3,9 +3,6 @@
     <output-path>$PROJECT_DIR$/../localhost/plugins</output-path>
     <root id="archive" name="AthenaJobs.jar">
       <element id="module-output" name="AthenaJobs" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../[Build] Upload/Jobs5.2.2.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="E:/pluginlib/PlaceholderAPI-2.11.5.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

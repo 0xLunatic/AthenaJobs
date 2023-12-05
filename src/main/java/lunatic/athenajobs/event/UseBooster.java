@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,53 +43,51 @@ public class UseBooster implements Listener {
                 if (boosterUsed != null) {
 
                     // Remove the item from the player's hand
-                    if (item.getAmount() >= 1) {
-                        item.setAmount(item.getAmount() - 1);
-                        String getBoosterType = boosterUsed;
-                        if (getBoosterType.contains("EXP")){
-                            String getBoosterMinute = boosterUsed.replaceAll("EXP ", "");
-                            String getBooster = getBoosterMinute.replaceAll("Minute", "");
+                    if (plugin.boosterIs == null) {
+                        if (item.getAmount() >= 1) {
+                            item.setAmount(item.getAmount() - 1);
+                            String getBoosterType = boosterUsed;
+                            if (getBoosterType.contains("EXP")) {
+                                String getBoosterMinute = boosterUsed.replaceAll("EXP ", "");
+                                String getBooster = getBoosterMinute.replaceAll("Minute", "");
 
-                            String[] numbers = getBooster.split(" ");
+                                String[] numbers = getBooster.split(" ");
 
-                            int expBoosterInt = Integer.parseInt(numbers[0]);
-                            int minuteBooster = Integer.parseInt(numbers[1]);
+                                int expBoosterInt = Integer.parseInt(numbers[0]);
+                                int minuteBooster = Integer.parseInt(numbers[1]);
 
-                            double expBooster = expBoosterInt / 100.0;
+                                double expBooster = expBoosterInt / 100.0;
 
-                            Bukkit.broadcastMessage("");
-                            Bukkit.broadcastMessage(" §e"+player.getName()+" §fbaru saja mengaktifkan §b" +expBooster+ "% Jobs EXP Booster §fselama §e" +minuteBooster+ " Menit §f! Seluruh player akan mendapatkan efek §eBooster §fini!");
-                            Bukkit.broadcastMessage("");
+                                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                    onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                }
+                                for (String job : jobsArray) {
+                                    executeCommand("jobs boost " + job + " exp " + minuteBooster + "m " + expBooster);
+                                }
+                                scheduleBoosterBroadcast(minuteBooster, player.getName(), "EXP", expBoosterInt, minuteBooster);
+                            } else if (getBoosterType.contains("Money")) {
+                                String getBoosterMinute = boosterUsed.replaceAll("Money ", "");
+                                String getBooster = getBoosterMinute.replaceAll("Minute", "");
+                                String[] numbers = getBooster.split(" ");
 
-                            for (Player onlinePlayer : Bukkit.getOnlinePlayers()){
-                                onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                int moneyBoosterInt = Integer.parseInt(numbers[0]);
+                                int minuteBooster = Integer.parseInt(numbers[1]);
+
+                                double expBooster = moneyBoosterInt / 100.0;
+
+                                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                    onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                }
+                                for (String job : jobsArray) {
+                                    executeCommand("jobs boost " + job + " money " + minuteBooster + "m " + expBooster);
+                                }
+                                scheduleBoosterBroadcast(minuteBooster, player.getName(), "Money", moneyBoosterInt, minuteBooster);
                             }
-                            for (String job : jobsArray) {
-                                executeCommand("jobs boost " + job + " exp " + minuteBooster + "m " + expBooster);
-                            }
-                        }else if (getBoosterType.contains("Money")){
-                            String getBoosterMinute = boosterUsed.replaceAll("Money ", "");
-                            String getBooster = getBoosterMinute.replaceAll("Minute", "");
-                            String[] numbers = getBooster.split(" ");
-
-                            int expBoosterInt = Integer.parseInt(numbers[0]);
-                            int minuteBooster = Integer.parseInt(numbers[1]);
-
-                            double expBooster = expBoosterInt / 100.0;
-
-                            Bukkit.broadcastMessage("");
-                            Bukkit.broadcastMessage(" §e"+player.getName()+" §fbaru saja mengaktifkan §b" +expBooster+ "% Jobs Money Booster §fselama §e" +minuteBooster+ " Menit§f! Seluruh player akan mendapatkan efek §eBooster §fini!");
-                            Bukkit.broadcastMessage("");
-
-                            for (Player onlinePlayer : Bukkit.getOnlinePlayers()){
-                                onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
-                            }
-                            for (String job : jobsArray) {
-                                executeCommand("jobs boost " + job + " money " + minuteBooster + "m " + expBooster);
-                            }
+                        } else {
+                            player.getInventory().setItemInMainHand(null);
                         }
-                    } else {
-                        player.getInventory().setItemInMainHand(null);
+                    }else{
+                        event.getPlayer().sendMessage("§cGagal mengaktifkan booster, sedang ada booster yang aktif!");
                     }
                 } else {
                     event.getPlayer().sendMessage("Not a valid booster item.");
@@ -130,6 +129,45 @@ public class UseBooster implements Listener {
             }
         }
         return null;
+    }
+    private void scheduleBoosterBroadcast(int durationMinutes, String playerName, String boosterType, int boosterValue, int minuteBooster) {
+        new BukkitRunnable() {
+            int remainingMinutes = durationMinutes;
+
+            @Override
+            public void run() {
+                if (remainingMinutes > 0) {
+                    broadcastBoosterActivation(playerName, boosterType, boosterValue, remainingMinutes);
+                    remainingMinutes--;
+                    plugin.boosterIs = playerName;
+                } else {
+                    broadcastBoosterOff();
+                    plugin.boosterIs = null;
+                    this.cancel();
+                }
+            }
+        }.runTaskTimer(plugin, 0, 1200); // 1200 ticks = 1 minute
+    }
+
+    private void broadcastBoosterActivation(String playerName, String boosterType, int boosterValue, int remainingMinutes) {
+        Bukkit.broadcastMessage("");
+        Bukkit.broadcastMessage("§2§lJobs Booster » §e" + playerName + " §ftelah mengaktifkan §b" + boosterValue + "% Jobs " + boosterType + " Booster§f! Tersisa §d" + remainingMinutes + " Menit§f!");
+        Bukkit.broadcastMessage("§fGunakan command §e/terimakasih §funtuk mengapresiasi §e" + playerName + "§f!");
+        Bukkit.broadcastMessage("");
+
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_WITHER_AMBIENT, 100, 0f);
+        }
+    }
+
+    private void broadcastBoosterOff() {
+        Bukkit.broadcastMessage("");
+        Bukkit.broadcastMessage("§2§lJobs Booster » §cTelah habis!");
+        Bukkit.broadcastMessage("");
+
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_WITHER_SHOOT, 100, 0f);
+        }
     }
 
 }
