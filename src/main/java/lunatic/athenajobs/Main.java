@@ -1,6 +1,5 @@
 package lunatic.athenajobs;
 
-import com.gamingmesh.jobs.Jobs;
 import lunatic.athenajobs.commands.GiveBooster;
 import lunatic.athenajobs.commands.JobsSelectorCommand;
 import lunatic.athenajobs.commands.Terimakasih;
