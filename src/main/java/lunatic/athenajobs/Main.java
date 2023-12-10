@@ -4,6 +4,7 @@ import com.gamingmesh.jobs.Jobs;
 import lunatic.athenajobs.commands.GiveBooster;
 import lunatic.athenajobs.commands.JobsSelectorCommand;
 import lunatic.athenajobs.commands.Terimakasih;
+import lunatic.athenajobs.event.BlockPlacerPrevent;
 import lunatic.athenajobs.event.OnJobsJoin;
 import lunatic.athenajobs.event.UseBooster;
 import lunatic.athenajobs.placeholder.GetPlaceholder;
@@ -23,6 +24,7 @@ public final class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new OnJobsJoin(this), this);
         getServer().getPluginManager().registerEvents(new UseBooster(this), this);
+        getServer().getPluginManager().registerEvents(new BlockPlacerPrevent(this), this);
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new GetPlaceholder(this).register();
         }
