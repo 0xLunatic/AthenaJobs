@@ -1,6 +1,5 @@
 package lunatic.athenajobs.placeholder;
 
-import com.gamingmesh.jobs.Jobs;
 import com.google.common.base.Joiner;
 import lunatic.athenajobs.Main;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -61,8 +60,7 @@ public class GetPlaceholder extends PlaceholderExpansion {
     }
 
     public String getTotalLevel(Player player) {
-        String result = PlaceholderAPI.setPlaceholders(player, "%jobsr_user_totallevels%");
-        return result;
+        return PlaceholderAPI.setPlaceholders(player, "%jobsr_user_totallevels%");
     }
 
     public String getEXPBooster(Player player) {
@@ -72,9 +70,7 @@ public class GetPlaceholder extends PlaceholderExpansion {
 
         int percentageValue = (int) (boostValue * 100);
 
-        String result = String.format("%d%%", percentageValue);
-
-        return result;
+        return String.format("%d%%", percentageValue);
     }
 
     public String getMoneyBooster(Player player) {
@@ -84,9 +80,7 @@ public class GetPlaceholder extends PlaceholderExpansion {
 
         int percentageValue = (int) (boostValue * 100);
 
-        String result = String.format("%d%%", percentageValue);
-
-        return result;
+        return String.format("%d%%", percentageValue);
     }
 
     @Override
@@ -113,6 +107,19 @@ public class GetPlaceholder extends PlaceholderExpansion {
     public String onRequest(OfflinePlayer player, String params) {
         if (params.equalsIgnoreCase("jobsName")) {
             String jobsName = getJobsName(player.getPlayer());
+            String[] splitJobsName = jobsName.split("(?=[A-Z])");
+
+            if (splitJobsName.length >= 2) {
+                StringBuilder formattedJobsName = new StringBuilder();
+                for (String jobName : splitJobsName) {
+                    formattedJobsName.append(jobName).append(" ");
+                }
+
+                if (formattedJobsName.length() > 0) {
+                    formattedJobsName = new StringBuilder(formattedJobsName.substring(0, formattedJobsName.length() - 1));
+                }
+                return "§fJobs : §a" + formattedJobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
+            }
             return "§fJobs : §a" + jobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
         }
         if (params.equalsIgnoreCase("expJobsBooster")) {

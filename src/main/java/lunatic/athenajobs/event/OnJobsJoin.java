@@ -2,12 +2,8 @@ package lunatic.athenajobs.event;
 
 import com.gamingmesh.jobs.Jobs;
 import com.gamingmesh.jobs.api.JobsJoinEvent;
-import com.gamingmesh.jobs.container.JobProgression;
 import com.gamingmesh.jobs.api.JobsLeaveEvent;
-import com.gamingmesh.jobs.container.Job;
-import com.gamingmesh.jobs.container.JobsPlayer;
-import com.gamingmesh.jobs.dao.JobsDAO;
-import com.gamingmesh.jobs.dao.JobsDAOData;
+import com.gamingmesh.jobs.container.JobProgression;
 import lunatic.athenajobs.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -726,7 +722,7 @@ public class OnJobsJoin implements Listener {
 
             }
         }
-        if (event.getJob().getName().equalsIgnoreCase("LegedaryForgemaster")) {
+        if (event.getJob().getName().equalsIgnoreCase("LegendaryForgemaster")) {
             if (isInJobs(player, "MasterSmith")) {
                 if (isEnoughLevel(player, 100)) {
                     Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
