@@ -32,7 +32,8 @@ public class JobsSelectorCommand implements CommandExecutor {
             sender.sendMessage("§fFirst Jobs : §dWorker");
             sender.sendMessage("§7Level Requirement : §d[25] §7➜ §f[50] §7➜ §e[100] §7➜ §c[150]");
             sender.sendMessage("");
-            sender.sendMessage("§7• §fBrewer §7➜ §eArtisan §7➜ §cMaster Artisan");
+            sender.sendMessage("§7• §fBrewer §7➜ §eMaster Brewer §7➜ §cAlchemical Distiller");
+            sender.sendMessage("§7• §fCrafter §7➜ §eArtisan §7➜ §cMaster Artisan");
             sender.sendMessage("§7• §fDigger §7➜ §eExcavator §7➜ §cEarthshaper");
             sender.sendMessage("§7• §fEnchanter §7➜ §eGlyphweaver §7➜ §cArcane Artisan");
             sender.sendMessage("§7• §fFarmer §7➜ §eAgriculturist §7➜ §cHarvestmaster");
