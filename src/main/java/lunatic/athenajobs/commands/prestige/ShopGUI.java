@@ -13,7 +13,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,10 +57,11 @@ public class ShopGUI implements Listener {
                         if (meta != null) {
                             meta.setDisplayName(itemName);
                             if (itemLore != null && !itemLore.isEmpty()) {
-                                for (int i = 0; i < itemLore.size(); i++) {
-                                    itemLore.set(i, ChatColor.translateAlternateColorCodes('&', itemLore.get(i)));
+                                List<String> formattedLore = new ArrayList<>();
+                                for (String loreLine : itemLore) {
+                                    formattedLore.add(ChatColor.translateAlternateColorCodes('&', loreLine));
                                 }
-                                meta.setLore(itemLore);
+                                meta.setLore(formattedLore);
                             }
                             item.setItemMeta(meta);
                         }
@@ -76,6 +79,22 @@ public class ShopGUI implements Listener {
             }
         }
 
+        // Add player stats head to slot 5
+        ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta headMeta = (SkullMeta) playerHead.getItemMeta();
+        if (headMeta != null) {
+            headMeta.setOwningPlayer(player);
+            headMeta.setDisplayName(ChatColor.GOLD + "Prestige Stats");
+            List<String> headLore = new ArrayList<>();
+            headLore.add("");
+            headLore.add(ChatColor.YELLOW + "Player Name: " + ChatColor.WHITE + player.getName());
+            headLore.add(ChatColor.YELLOW + "Prestige Level: " + ChatColor.WHITE + plugin.dbConnection.getLevel(player.getUniqueId()));
+            headLore.add(ChatColor.YELLOW + "Prestige Coins: " + ChatColor.WHITE + plugin.dbConnection.getCoins(player.getUniqueId()));
+            headMeta.setLore(headLore);
+            playerHead.setItemMeta(headMeta);
+        }
+        shop.setItem(4, playerHead); // Slot 5 in 0-indexed array is 4
+
         player.openInventory(shop);
     }
 
@@ -87,7 +106,7 @@ public class ShopGUI implements Listener {
 
         event.setCancelled(true);
 
-        if (event.getCurrentItem() == null || !event.getCurrentItem().hasItemMeta() || event.getCurrentItem().getType().equals(Material.BARRIER)) {
+        if (event.getCurrentItem() == null || !event.getCurrentItem().hasItemMeta() || event.getCurrentItem().getType().equals(Material.BARRIER) || event.getCurrentItem().getType().equals(Material.PLAYER_HEAD)) {
             return;
         }
 
