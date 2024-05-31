@@ -44,7 +44,7 @@ public class PrestigeCommand implements CommandExecutor {
                 plugin.dbConnection.addPlayer(player.getUniqueId(), player.getName());
                 plugin.dbConnection.addCoins(player.getUniqueId(), 1);
                 plugin.dbConnection.addLevel(player.getUniqueId(), 1);
-                Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja melakukan §e§lPrestige §fke-"+ plugin.dbConnection.getLevel(player.getUniqueId()) + "!");
+                Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja melakukan §e§lPrestige §fke-"+ plugin.dbConnection.getLevel(player.getUniqueId()) + "!\n");
 
                 plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "lp user " + player.getName() + " permission set jobs.boost.all.exp.0." + plugin.dbConnection.getLevel(player.getUniqueId()));
                 plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "lp user " + player.getName() + " permission set jobs.boost.all.money.0." + plugin.dbConnection.getLevel(player.getUniqueId()));
