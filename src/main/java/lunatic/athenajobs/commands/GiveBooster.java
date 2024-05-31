@@ -24,13 +24,9 @@ public class GiveBooster implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("This command can only be run by a player.");
-            return true;
-        }
 
         if (args.length < 2) {
-            sender.sendMessage("Usage: /givebooster <targetPlayer> <name>");
+            sender.sendMessage("Usage: /givebooster <targetPlayer> <type [all/enter the name]>");
             return true;
         }
 
@@ -78,12 +74,22 @@ public class GiveBooster implements CommandExecutor {
 
                 // Set lore
                 List<String> lore = new ArrayList<>();
-                lore.add("§fBoost up §bJobs Gain §fby §e" + args[1].replace("&d", "") + "§f for §b" + args[5].replaceAll("&7\\(&b", "").replaceAll("\\)", "")
-                        + " minutes§f.");
-                lore.add("§fRight-click to activate this booster and enhance");
-                lore.add("§fall players' job gains. §eExpires after use.");
-                lore.add("");
-                lore.add("§cTHIS ITEM APPLIES TO ALL PLAYERS");
+                if (!args[1].contains("Personal")) {
+                    lore.add("§fBoost up §bJobs Gain §fby §e" + args[1].replace("&d", "") + "§f for §b" + args[5].replaceAll("&7\\(&b", "").replaceAll("\\)", "")
+                            + " minutes§f.");
+                    lore.add("§fRight-click to activate this booster and enhance");
+                    lore.add("§fall players' job gains. §eExpires after use.");
+                    lore.add("§cWARNING! THIS ITEM CANNOT BE STACKED!");
+                    lore.add("");
+                    lore.add("§cTHIS ITEM APPLIES TO ALL PLAYERS");
+                }else{
+                    lore.add("§fBoost up §bJobs Gain §fby §e" + args[2].replace("&d", "") + "§f for §b" + args[6].replaceAll("&7\\(&b", "").replaceAll("\\)", "")
+                            + " minutes§f.");
+                    lore.add("§fRight-click to activate this booster and enhance");
+                    lore.add("§fall players' job gains. §eExpires after use.");
+                    lore.add("");
+                    lore.add("§cTHIS ITEM APPLIES TO ALL PLAYERS");
+                }
 
                 meta.setLore(lore);
                 dragonBreath.setItemMeta(meta);

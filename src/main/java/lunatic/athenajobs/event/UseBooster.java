@@ -47,44 +47,126 @@ public class UseBooster implements Listener {
                         if (item.getAmount() >= 1) {
                             item.setAmount(item.getAmount() - 1);
                             String getBoosterType = boosterUsed;
-                            if (getBoosterType.contains("EXP")) {
-                                String getBoosterMinute = boosterUsed.replaceAll("EXP ", "");
-                                String getBooster = getBoosterMinute.replaceAll("Minute", "");
+                            if (boosterUsed.contains("Personal")){
+                                if (getBoosterType.contains("EXP")) {
+                                    String getBoosterMinute = boosterUsed.replaceAll("EXP ", "");
+                                    String getBooster = getBoosterMinute.replaceAll("Minute", "").replaceAll("Personal ", "");
 
-                                String[] numbers = getBooster.split(" ");
+                                    String[] numbers = getBooster.split(" ");
 
-                                int expBoosterInt = Integer.parseInt(numbers[0]);
-                                int minuteBooster = Integer.parseInt(numbers[1]);
+                                    int expBoosterInt = Integer.parseInt(numbers[0]);
+                                    int minuteBooster = Integer.parseInt(numbers[1]);
 
-                                double expBooster = expBoosterInt / 100.0;
+                                    double expBooster = expBoosterInt / 100.0;
 
-                                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                                    onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                        onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    }
+                                    executeCommand("lp user " + player.getName() + " permission settemp jobs.boost.all.exp." + expBooster + " true 60m");
+
+                                    Bukkit.broadcastMessage("");
+                                    Bukkit.broadcastMessage("§2§lJobs Booster » §e" + player.getName() + " §ftelah mengaktifkan §bPersonal " + expBoosterInt + "% Jobs EXP Booster§f! selama §d"+minuteBooster+" menit§f!");
+                                    Bukkit.broadcastMessage("");
+
+                                } else if (getBoosterType.contains("Money")) {
+                                    String getBoosterMinute = boosterUsed.replaceAll("Money ", "");
+                                    String getBooster = getBoosterMinute.replaceAll("Minute", "").replaceAll("Personal ", "");
+                                    String[] numbers = getBooster.split(" ");
+
+                                    int moneyBoosterInt = Integer.parseInt(numbers[0]);
+                                    int minuteBooster = Integer.parseInt(numbers[1]);
+
+                                    double expBooster = moneyBoosterInt / 100.0;
+
+                                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                        onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    }
+                                    executeCommand("lp user " + player.getName() + " permission settemp jobs.boost.all.money." + expBooster + " true 60m");
+
+                                    Bukkit.broadcastMessage("");
+                                    Bukkit.broadcastMessage("§2§lJobs Booster » §e" + player.getName() + " §ftelah mengaktifkan §bPersonal " + moneyBoosterInt + "% Jobs Money Booster§f! selama §d"+minuteBooster+" menit§f!");
+                                    Bukkit.broadcastMessage("");
                                 }
-                                for (String job : jobsArray) {
-                                    executeCommand("jobs boost " + job + " exp " + minuteBooster + "m " + expBooster);
-                                }
-                                scheduleBoosterBroadcast(minuteBooster, player.getName(), "EXP", expBoosterInt, minuteBooster);
-                            } else if (getBoosterType.contains("Money")) {
-                                String getBoosterMinute = boosterUsed.replaceAll("Money ", "");
-                                String getBooster = getBoosterMinute.replaceAll("Minute", "");
-                                String[] numbers = getBooster.split(" ");
+                                else if (getBoosterType.contains("Both")) {
+                                    String getBoosterMinute = boosterUsed.replaceAll("Both ", "");
+                                    String getBooster = getBoosterMinute.replaceAll("Minute", "").replaceAll("Personal ", "");
+                                    String[] numbers = getBooster.split(" ");
 
-                                int moneyBoosterInt = Integer.parseInt(numbers[0]);
-                                int minuteBooster = Integer.parseInt(numbers[1]);
+                                    int moneyBoosterInt = Integer.parseInt(numbers[0]);
+                                    int minuteBooster = Integer.parseInt(numbers[1]);
 
-                                double expBooster = moneyBoosterInt / 100.0;
+                                    double expBooster = moneyBoosterInt / 100.0;
 
-                                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                                    onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                        onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    }
+                                    executeCommand("lp user " + player.getName() + " permission settemp jobs.boost.all.money." + expBooster + " true 60m");
+                                    executeCommand("lp user " + player.getName() + " permission settemp jobs.boost.all.exp." + expBooster + " true 60m");
+
+                                    Bukkit.broadcastMessage("");
+                                    Bukkit.broadcastMessage("§2§lJobs Booster » §e" + player.getName() + " §ftelah mengaktifkan §bPersonal " + moneyBoosterInt + "% Jobs Both Booster§f! selama §d"+minuteBooster+" menit§f!");
+                                    Bukkit.broadcastMessage("");
+
                                 }
-                                for (String job : jobsArray) {
-                                    executeCommand("jobs boost " + job + " money " + minuteBooster + "m " + expBooster);
-                                }
-                                scheduleBoosterBroadcast(minuteBooster, player.getName(), "Money", moneyBoosterInt, minuteBooster);
+
                             }
-                        } else {
-                            player.getInventory().setItemInMainHand(null);
+                            else {
+                                if (getBoosterType.contains("EXP")) {
+                                    String getBoosterMinute = boosterUsed.replaceAll("EXP ", "");
+                                    String getBooster = getBoosterMinute.replaceAll("Minute", "");
+
+                                    String[] numbers = getBooster.split(" ");
+
+                                    int expBoosterInt = Integer.parseInt(numbers[0]);
+                                    int minuteBooster = Integer.parseInt(numbers[1]);
+
+                                    double expBooster = expBoosterInt / 100.0;
+
+                                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                        onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    }
+                                    for (String job : jobsArray) {
+                                        executeCommand("jobs boost " + job + " exp " + minuteBooster + "m " + expBooster);
+                                    }
+                                    scheduleBoosterBroadcast(minuteBooster, player.getName(), "EXP", expBoosterInt, minuteBooster);
+                                } else if (getBoosterType.contains("Money")) {
+                                    String getBoosterMinute = boosterUsed.replaceAll("Money ", "");
+                                    String getBooster = getBoosterMinute.replaceAll("Minute", "");
+                                    String[] numbers = getBooster.split(" ");
+
+                                    int moneyBoosterInt = Integer.parseInt(numbers[0]);
+                                    int minuteBooster = Integer.parseInt(numbers[1]);
+
+                                    double expBooster = moneyBoosterInt / 100.0;
+
+                                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                        onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    }
+                                    for (String job : jobsArray) {
+                                        executeCommand("jobs boost " + job + " money " + minuteBooster + "m " + expBooster);
+                                    }
+                                    scheduleBoosterBroadcast(minuteBooster, player.getName(), "Money", moneyBoosterInt, minuteBooster);
+                                }
+                                else if (getBoosterType.contains("Both")) {
+                                    String getBoosterMinute = boosterUsed.replaceAll("Both ", "");
+                                    String getBooster = getBoosterMinute.replaceAll("Minute", "");
+                                    String[] numbers = getBooster.split(" ");
+
+                                    int moneyBoosterInt = Integer.parseInt(numbers[0]);
+                                    int minuteBooster = Integer.parseInt(numbers[1]);
+
+                                    double expBooster = moneyBoosterInt / 100.0;
+
+                                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                        onlinePlayer.playSound(onlinePlayer, Sound.ENTITY_ENDER_DRAGON_GROWL, 100, 0f);
+                                    }
+                                    for (String job : jobsArray) {
+                                        executeCommand("jobs boost " + job + " money " + minuteBooster + "m " + expBooster);
+                                        executeCommand("jobs boost " + job + " exp " + minuteBooster + "m " + expBooster);
+                                    }
+                                    scheduleBoosterBroadcast(minuteBooster, player.getName(), "Money and Exp", moneyBoosterInt, minuteBooster);
+                                }
+                            }
                         }
                     }else{
                         event.getPlayer().sendMessage("§cGagal mengaktifkan booster, sedang ada booster yang aktif!");
@@ -116,6 +198,11 @@ public class UseBooster implements Listener {
             String duration = getSubstringBetween(displayName, "§b", "Minute");
             return percentage + " Money " + duration + "Minute";
         }
+        else if (displayName.contains("Both")) {
+            String percentage = getSubstringBetween(displayName, "§d", "%");
+            String duration = getSubstringBetween(displayName, "§b", "Minute");
+            return percentage + " Both " + duration + "Minute";
+        }
 
         return null; // Unknown booster type
     }
@@ -131,14 +218,13 @@ public class UseBooster implements Listener {
         return null;
     }
     private void scheduleBoosterBroadcast(int durationMinutes, String playerName, String boosterType, int boosterValue, int minuteBooster) {
+        final int[] remainingMinutes = {durationMinutes};
         new BukkitRunnable() {
-            int remainingMinutes = durationMinutes;
 
             @Override
             public void run() {
-                if (remainingMinutes > 0) {
-                    broadcastBoosterActivation(playerName, boosterType, boosterValue, remainingMinutes);
-                    remainingMinutes--;
+                if (remainingMinutes[0] > 0) {
+                    remainingMinutes[0]--;
                     plugin.boosterIs = playerName;
                 } else {
                     broadcastBoosterOff();
@@ -147,6 +233,19 @@ public class UseBooster implements Listener {
                 }
             }
         }.runTaskTimer(plugin, 0, 1200); // 1200 ticks = 1 minute
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                if (remainingMinutes[0] > 0) {
+                    broadcastBoosterActivation(playerName, boosterType, boosterValue, remainingMinutes[0]+1);
+                } else {
+                    broadcastBoosterOff();
+                    plugin.boosterIs = null;
+                    this.cancel();
+                }
+            }
+        }.runTaskTimer(plugin, 0, 6000); // 1200 ticks = 1 minute
     }
 
     private void broadcastBoosterActivation(String playerName, String boosterType, int boosterValue, int remainingMinutes) {

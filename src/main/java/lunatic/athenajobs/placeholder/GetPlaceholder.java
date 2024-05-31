@@ -17,12 +17,12 @@ import java.util.Random;
 
 public class GetPlaceholder extends PlaceholderExpansion {
     private Main plugin;
-    private String[] randomStrings = {"Beban Hidup", "Calon Almarhum", "Sering Patah Hati", "Sering Sakit Hati",
-            "Merasa Hampa", "Kosong", "Lemah Letih Lesu", "Sering Tiduran", "Pemalas" ,"Pengangguran Berpotensi","Gelandangan",
-            "Pengangguran", "Beban", "Pencari Kerja", "Tunawisma", "Calon Pekerja", "Freshgraduate",
-            "Hanya Duduk", "Bersantai", "Malas Bergerak", "Lelah Belajar", "Seorang Pemimpi", "Calon Presiden",
-            "Mati Rasa", "Hubungan Retak", "Romansa Hancur", "Sering Terluka Batin", "Sering Terdiam Sendiri",
-            "Sering Terbuang Jauh", "Jomblo", "Patah Hati", "Backburner", "Jadi Second Choice", "Jadi Badut", "Ngebadut"};
+    private String[] randomStrings = {"BebanHidup", "CalonAlmarhum", "SeringPatahHati", "SeringSakitHati",
+            "MerasaHampa", "Kosong", "LemahLetihLesu", "SeringTiduran", "Pemalas" ,"PengangguranBerpotensi","Gelandangan",
+            "Pengangguran", "Beban", "PencariKerja", "Tunawisma", "CalonPekerja", "Freshgraduate",
+            "HanyaDuduk", "Bersantai", "MalasBergerak", "LelahBelajar", "SeorangPemimpi", "CalonPresiden",
+            "MatiRasa", "HubunganRetak", "RomansaHancur", "SeringTerlukaBatin", "SeringTerdiamSendiri",
+            "SeringTerbuangJauh", "Jomblo", "PatahHati", "Backburner", "JadiSecondChoice", "JadiBadut", "Ngebadut"};
     private String shuffledJobsName;
 
     public GetPlaceholder(Main plugin) {
@@ -103,24 +103,31 @@ public class GetPlaceholder extends PlaceholderExpansion {
         return true; // This is required or else PlaceholderAPI will unregister the Expansion on reload
     }
 
+    private String formatJobsName(String jobsName) {
+        String[] splitJobsName = jobsName.split("(?=[A-Z])");
+
+        if (splitJobsName.length >= 2) {
+            StringBuilder formattedJobsName = new StringBuilder();
+
+            // Exclude the first uppercase letter from adding a space
+            formattedJobsName.append(splitJobsName[0]);
+
+            for (int i = 1; i < splitJobsName.length; i++) {
+                formattedJobsName.append(" ").append(splitJobsName[i]);
+            }
+
+            return formattedJobsName.toString();
+        }
+
+        return jobsName;
+    }
     @Override
     public String onRequest(OfflinePlayer player, String params) {
         if (params.equalsIgnoreCase("jobsName")) {
             String jobsName = getJobsName(player.getPlayer());
-            String[] splitJobsName = jobsName.split("(?=[A-Z])");
+            String formattedJobsName = formatJobsName(jobsName);
 
-            if (splitJobsName.length >= 2) {
-                StringBuilder formattedJobsName = new StringBuilder();
-                for (String jobName : splitJobsName) {
-                    formattedJobsName.append(jobName).append(" ");
-                }
-
-                if (formattedJobsName.length() > 0) {
-                    formattedJobsName = new StringBuilder(formattedJobsName.substring(0, formattedJobsName.length() - 1));
-                }
-                return "§fJobs : §a" + formattedJobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
-            }
-            return "§fJobs : §a" + jobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
+            return "§fJobs : §a" + formattedJobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
         }
         if (params.equalsIgnoreCase("expJobsBooster")) {
             String jobsName = ChatColor.stripColor(getJobsName(player.getPlayer()));

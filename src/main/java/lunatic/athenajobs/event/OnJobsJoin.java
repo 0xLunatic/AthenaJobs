@@ -44,7 +44,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Brewer")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♨");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -66,7 +66,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Crafter")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♯");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -88,7 +88,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Digger")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♦");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -110,7 +110,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Enchanter")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f∮");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -132,7 +132,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Farmer")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f♆");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -154,7 +154,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Fisherman")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f✥");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -176,7 +176,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Hunter")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f☣");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -198,7 +198,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Miner")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&fϡ");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -220,7 +220,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Weaponsmith")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f⍫");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -242,7 +242,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Lumberjack")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f≠");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -264,7 +264,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Killer")) {
             if (isInJobs(player, "Worker")) {
                 if (isEnoughLevel(player, 25)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&f☠");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -287,7 +287,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("MasterBrewer")) {
             if (isInJobs(player, "Brewer")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e♨");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -310,7 +310,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Artisan")) {
             if (isInJobs(player, "Crafter")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e♯");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -333,7 +333,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Excavator")) {
             if (isInJobs(player, "Digger")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e♦");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -356,7 +356,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Glyphweaver")) {
             if (isInJobs(player, "Enchanter")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e∮");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -379,7 +379,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Agriculturist")) {
             if (isInJobs(player, "Farmer")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e♆");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -402,7 +402,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("MasterAngler")) {
             if (isInJobs(player, "Fisherman")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e✥");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -425,7 +425,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Scout")) {
             if (isInJobs(player, "Hunter")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e☣");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -448,7 +448,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Dighunter")) {
             if (isInJobs(player, "Miner")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&eϡ");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -471,7 +471,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("MasterSmith")) {
             if (isInJobs(player, "Weaponsmith")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e⍫");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -494,7 +494,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Timberer")) {
             if (isInJobs(player, "Lumberjack")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e≠");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -517,7 +517,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Villain")) {
             if (isInJobs(player, "Killer")) {
                 if (isEnoughLevel(player, 50)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&e☠");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -541,7 +541,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("AlchemicalDistiller")) {
             if (isInJobs(player, "MasterBrewer")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c♨");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -564,7 +564,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("MasterArtisan")) {
             if (isInJobs(player, "Artisan")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c♯");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -587,7 +587,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Earthshaper")) {
             if (isInJobs(player, "Excavator")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c♦");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -610,7 +610,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("ArcaneArtisan")) {
             if (isInJobs(player, "Glyphweaver")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c∮");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -633,7 +633,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Harvestmaster")) {
             if (isInJobs(player, "Agriculturist")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c♆");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -656,7 +656,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("AquaticMaestro")) {
             if (isInJobs(player, "MasterAngler")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c✥");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -679,7 +679,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Ranger")) {
             if (isInJobs(player, "Scout")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c☣");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -702,7 +702,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Veinmaster")) {
             if (isInJobs(player, "Dighunter")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&cϡ");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -725,7 +725,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("LegendaryForgemaster")) {
             if (isInJobs(player, "MasterSmith")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c⍫");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -748,7 +748,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Arborist")) {
             if (isInJobs(player, "Timberer")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c≠");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -771,7 +771,7 @@ public class OnJobsJoin implements Listener {
         if (event.getJob().getName().equalsIgnoreCase("Psychopath")) {
             if (isInJobs(player, "Villain")) {
                 if (isEnoughLevel(player, 100)) {
-                    Bukkit.broadcastMessage("\n§e§lAthenaJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
+                    Bukkit.broadcastMessage("\n§e§lJobs » §d" + player.getName() + " §fbaru saja berpindah Jobs ke §c" + event.getJob().getName() + "§f!\n");
                     playSoundToAll(Sound.UI_TOAST_CHALLENGE_COMPLETE, 50, 0);
                     setSuffix(player, "&c☠");
                     // Remove Exp Of Max Level Job Before Transfer, Otherwise The Exp Will Affect The Level Of New Job
@@ -820,7 +820,7 @@ public class OnJobsJoin implements Listener {
     }
     private void clearSuffix(Player player){
         ConsoleCommandSender console1 = Bukkit.getServer().getConsoleSender();
-        String command1 = "lp user " + player.getName() + " meta clear";
+        String command1 = "lp user " + player.getName() + " meta removesuffix 0";
         Bukkit.getServer().dispatchCommand(console1, command1);
     }
 }

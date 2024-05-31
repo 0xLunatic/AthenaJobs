@@ -10,3 +10,9 @@ commands:
     description: Give Booster
   terimakasih:
     description: Berterimakasih!
+  prestige:
+    description: Level up prestige
+  athenajobs:
+    description: Reloads the AthenaJobs plugin configuration
+    usage: /athenajobs reload
+    permission: athenajobs.reload
