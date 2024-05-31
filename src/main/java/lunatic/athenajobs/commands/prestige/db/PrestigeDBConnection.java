@@ -1,17 +1,19 @@
 package lunatic.athenajobs.commands.prestige.db;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import lunatic.athenajobs.Main;
+import org.bukkit.configuration.file.FileConfiguration;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class PrestigeDBConnection {
-    private Main plugin;
-    private Connection connection;
+    private final Main plugin;
+    private static HikariDataSource dataSource;
 
     public PrestigeDBConnection(Main plugin) {
         this.plugin = plugin;
@@ -27,12 +29,21 @@ public class PrestigeDBConnection {
         String user = config.getString("database.user");
         String password = config.getString("database.password");
 
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setUsername(user);
+        hikariConfig.setPassword(password);
+        hikariConfig.setConnectionTimeout(10000);
+        hikariConfig.setMaximumPoolSize(20); // Adjust the pool size as needed
+        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        hikariConfig.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + database + "?allowPublicKeyRetrieval=true&useSSL=" + "false");
+        hikariConfig.setMaxLifetime(30000);
+        dataSource = new HikariDataSource(hikariConfig);
 
         try {
-            connection = DriverManager.getConnection(url, user, password);
+            Connection connection = dataSource.getConnection();
             plugin.getLogger().info("Database connected successfully.");
             createTableIfNotExists();
+            closeConnection(connection);
         } catch (SQLException e) {
             plugin.getLogger().severe("Unable to connect to the database: " + e.getMessage());
         }
@@ -44,7 +55,7 @@ public class PrestigeDBConnection {
                 + "player_name VARCHAR(16) NOT NULL, "
                 + "coins INT DEFAULT 0, "
                 + "level INT DEFAULT 0)";
-        try (PreparedStatement statement = connection.prepareStatement(createTableSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(createTableSQL)) {
             statement.executeUpdate();
             plugin.getLogger().info("Created!");
         } catch (SQLException e) {
@@ -52,24 +63,24 @@ public class PrestigeDBConnection {
         }
     }
 
-    public Connection getConnection() {
-        return connection;
+    public Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
     }
 
-    public void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-                plugin.getLogger().info("Database connection closed.");
-            } catch (SQLException e) {
-                plugin.getLogger().severe("Failed to close the database connection: " + e.getMessage());
-            }
+    public void closeConnection(Connection connection) {
+        dataSource.evictConnection(connection);
+    }
+
+    public void closeDataSource() {
+        if (dataSource != null) {
+            dataSource.close();
+            plugin.getLogger().info("Database connection closed.");
         }
     }
 
     public void addPlayer(UUID playerUUID, String playerName) {
         String insertSQL = "INSERT INTO prestige_coins (player_uuid, player_name) VALUES (?, ?) ON DUPLICATE KEY UPDATE player_name = ?";
-        try (PreparedStatement statement = connection.prepareStatement(insertSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(insertSQL)) {
             statement.setString(1, playerUUID.toString());
             statement.setString(2, playerName);
             statement.setString(3, playerName);
@@ -81,7 +92,7 @@ public class PrestigeDBConnection {
 
     public int getCoins(UUID playerUUID) {
         String selectSQL = "SELECT coins FROM prestige_coins WHERE player_uuid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(selectSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(selectSQL)) {
             statement.setString(1, playerUUID.toString());
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -95,7 +106,7 @@ public class PrestigeDBConnection {
 
     public void setCoins(UUID playerUUID, int coins) {
         String updateSQL = "UPDATE prestige_coins SET coins = ? WHERE player_uuid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(updateSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(updateSQL)) {
             statement.setInt(1, coins);
             statement.setString(2, playerUUID.toString());
             statement.executeUpdate();
@@ -116,7 +127,7 @@ public class PrestigeDBConnection {
 
     public void removePlayer(UUID playerUUID) {
         String deleteSQL = "DELETE FROM prestige_coins WHERE player_uuid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(deleteSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(deleteSQL)) {
             statement.setString(1, playerUUID.toString());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -127,7 +138,7 @@ public class PrestigeDBConnection {
     // New Methods for Managing Player Levels
     public int getLevel(UUID playerUUID) {
         String selectSQL = "SELECT level FROM prestige_coins WHERE player_uuid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(selectSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(selectSQL)) {
             statement.setString(1, playerUUID.toString());
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -141,7 +152,7 @@ public class PrestigeDBConnection {
 
     public void setLevel(UUID playerUUID, int level) {
         String updateSQL = "UPDATE prestige_coins SET level = ? WHERE player_uuid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(updateSQL)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(updateSQL)) {
             statement.setInt(1, level);
             statement.setString(2, playerUUID.toString());
             statement.executeUpdate();

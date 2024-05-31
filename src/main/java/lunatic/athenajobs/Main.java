@@ -58,7 +58,7 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         if (dbConnection != null) {
-            dbConnection.closeConnection();
+            dbConnection.closeDataSource();
         }
     }
     public PrestigeDBConnection getDbConnection() {
