@@ -43,7 +43,8 @@ public class GetPlaceholder extends PlaceholderExpansion {
             return jobsName;
         } else {
             // Use the shuffledJobsName if available, otherwise generate a new one
-            return shuffledJobsName != null ? shuffledJobsName : generateNewShuffledJobsName();
+            return "No job!";
+//            return shuffledJobsName != null ? shuffledJobsName : generateNewShuffledJobsName();
         }
     }
 
@@ -109,18 +110,21 @@ public class GetPlaceholder extends PlaceholderExpansion {
             String jobsName = getJobsName(player.getPlayer());
             String[] splitJobsName = jobsName.split("(?=[A-Z])");
 
-            if (splitJobsName.length >= 2) {
-                StringBuilder formattedJobsName = new StringBuilder();
-                for (String jobName : splitJobsName) {
-                    formattedJobsName.append(jobName).append(" ");
-                }
+            if (!jobsName.equalsIgnoreCase("no job!")) {
+                if (splitJobsName.length >= 2) {
+                    StringBuilder formattedJobsName = new StringBuilder();
+                    for (String jobName : splitJobsName) {
+                        formattedJobsName.append(jobName).append(" ");
+                    }
 
-                if (formattedJobsName.length() > 0) {
-                    formattedJobsName = new StringBuilder(formattedJobsName.substring(0, formattedJobsName.length() - 1));
+                    if (formattedJobsName.length() > 0) {
+                        formattedJobsName = new StringBuilder(formattedJobsName.substring(0, formattedJobsName.length() - 1));
+                    }
+                    return formattedJobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
                 }
-                return "§fJobs : §a" + formattedJobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
+                return jobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
             }
-            return "§fJobs : §a" + jobsName + " §7(§e" + getTotalLevel(player.getPlayer()) + "§7)";
+            return jobsName;
         }
         if (params.equalsIgnoreCase("expJobsBooster")) {
             String jobsName = ChatColor.stripColor(getJobsName(player.getPlayer()));
