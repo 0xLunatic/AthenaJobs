@@ -1,0 +1,22 @@
+shop:
+  title: "Prestige Shop"
+  size: 27
+  items:
+    11:
+      material: "DIAMOND_SWORD"
+      name: "&bPrestige Sword"
+      lore:
+        - "&7A powerful sword for the"
+        - "&7prestigious players."
+      command: "mi give armor peci %player% 1"
+      level: 1
+      price: 100
+    15:
+      material: "GOLDEN_APPLE"
+      name: "&dGolden Apple"
+      lore:
+        - "&7A golden apple to"
+        - "&7boost your health."
+      command: "mi give diamond %player% 1"
+      level: 2
+      price: 50
